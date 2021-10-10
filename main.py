@@ -25,7 +25,7 @@ while cam.isOpened():
     dilated = cv2.dilate(sharp,None, iterations=3)
     cont, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     for c in cont :
-        if cv2.contourArea(c) < 50000:
+        if cv2.contourArea(c) < 30000: #Control the sensitivity by decreasing or increasing this value
             continue
         a,b,c,d = cv2.boundingRect(c)
         cv2.rectangle(f1, (a,b), (a+c , b+d), (0,0,255))
